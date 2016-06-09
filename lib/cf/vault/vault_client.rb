@@ -1,6 +1,6 @@
 module CF
   class Vault
-    class Client
+    class VaultClient
       def initialize(config)
         @client = ::Vault::Client.new(config)
       end

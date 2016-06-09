@@ -1,6 +1,6 @@
 require 'vault'
 require_relative 'cloud_foundry_client'
-require_relative 'client'
+require_relative 'vault_client'
 
 module CF
   class Vault
@@ -47,7 +47,7 @@ module CF
       end
 
       def secrets
-        client = CF::Vault::Client.new(address: vault_endpoint)
+        client = CF::Vault::VaultClient.new(address: vault_endpoint)
         @secrets ||= client.read(key)
       end
     end
