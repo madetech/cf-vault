@@ -22,20 +22,18 @@ module CF
       attr_reader :client, :key
 
       def login_to_cf
-        CF::CloudFoundry.login(cf_login_details)
+        CF::CloudFoundry.login(credentials: cf_login_details)
       end
 
       def cf_login_details
-        cf_secrets.reject{ |k, _| k == :app_name }
+        cf_secrets.reject { |k, _| k == :cf_app }
       end
 
       def set_environment_variables
-        set_environment_cmd = "cf set-env #{app_name}"
-
-        environment_variables.each do |key, value|
-          puts "#{set_environment_cmd} #{key} #{escape(value)}"
-          Kernel.system("#{set_environment_cmd} #{key} #{escape(value)}")
-        end
+        CF::CloudFoundry.set_environment_variables(
+          app_name: app_name,
+          environment_variables: environment_variables
+        )
       end
 
       def app_name
