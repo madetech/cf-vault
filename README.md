@@ -1,6 +1,6 @@
 # Cloud Foundry Vault
 
-`cf-vault` is the tool you use to syncronise your application secrets stored in [Vault][Hashicorp's Vault] to [CloudFoundry][Cloud Foundry] providers like [Pivotal][Pivotal].
+`cf-vault` is the tool you use to syncronise your application secrets stored in [Hashicorp's Vault][Vault] to [Cloud Foundry][CloudFoundry] providers like [Pivotal][Pivotal].
 
 ```
 rake cf:vault
