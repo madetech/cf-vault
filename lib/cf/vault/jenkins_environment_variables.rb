@@ -18,11 +18,11 @@ module CF
       attr_reader :vault_endpoint, :key
 
       def set_environment_variables
-        cloudfoundry_secrets.each { |key, value| ENV[key.to_s] = value }
+        cloudfoundry_secrets.each { |key, value| system("export #{key.to_s}=#{value}"); ENV[key.to_s] = value }
       end
 
       def cloudfoundry_secrets
-        secrets.select { |k, _| k.match(/^cf_/) }
+        secrets.select { |k, _| k.to_s.match(/^cf_/) }
       end
 
       def secrets

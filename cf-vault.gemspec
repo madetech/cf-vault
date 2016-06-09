@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cf/vault/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'cf-deploy'
+  spec.name          = 'cf-vault'
   spec.version       = CF::Vault::VERSION
   spec.authors       = ['Emile Swarts', 'Chris Blackburn']
   spec.email         = ['emile@madetech.co.uk', 'chris@madetech.co.uk']
