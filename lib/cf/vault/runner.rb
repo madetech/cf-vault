@@ -23,22 +23,26 @@ module CF
       def login_to_cf
         login_cmd = ['cf login']
 
-        login_cmd << cf_secrets.map { |key, value| "-#{key[3..-1]} #{value}" }
+        login_cmd << cf_secrets.reject { |key, _value| key == :cf_app }.map { |key, value| "-#{key[3]} #{escape(value)}" }
 
         Kernel.system(login_cmd.flatten.join(' '))
       end
 
       def set_environment_variables
+        set_environment_cmd = "cf set-env #{app_name}"
 
         environment_variables.each do |key, value|
-        set_environment_cmd = ["cf set-env #{app_name}"]
-
-          Kernel.system(login_cmd.flatten.join(' '))
+          puts "#{set_environment_cmd} #{key} #{escape(value)}"
+          Kernel.system("#{set_environment_cmd} #{key} #{escape(value)}")
         end
       end
 
       def app_name
         cf_secrets.fetch(:cf_app)
+      end
+
+      def escape(value)
+        "\"#{value.gsub('"', '\"')}\""
       end
 
       def environment_variables
