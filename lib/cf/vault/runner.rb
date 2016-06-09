@@ -1,4 +1,5 @@
 require 'vault'
+require_relative '../cloud_foundry'
 
 module CF
   class Vault
@@ -21,11 +22,11 @@ module CF
       attr_reader :client, :key
 
       def login_to_cf
-        login_cmd = ['cf login']
+        CF::CloudFoundry.login(cf_login_details)
+      end
 
-        login_cmd << cf_secrets.reject { |key, _value| key == :cf_app }.map { |key, value| "-#{key[3]} #{escape(value)}" }
-
-        Kernel.system(login_cmd.flatten.join(' '))
+      def cf_login_details
+        cf_secrets.reject{ |k, _| k == :app_name }
       end
 
       def set_environment_variables
@@ -41,9 +42,6 @@ module CF
         cf_secrets.fetch(:cf_app)
       end
 
-      def escape(value)
-        "\"#{value.gsub('"', '\"')}\""
-      end
 
       def environment_variables
         return {
