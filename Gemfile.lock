@@ -1,0 +1,43 @@
+PATH
+  remote: .
+  specs:
+    cf-deploy (0.0.1)
+      rake
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    codeclimate-test-reporter (0.5.1)
+      simplecov (>= 0.7.1, < 1.0.0)
+    diff-lcs (1.2.5)
+    multi_json (1.12.1)
+    rake (11.1.2)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.4)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.5)
+  cf-deploy!
+  codeclimate-test-reporter
+  rspec (~> 3.0.0)
+  simplecov (~> 0.7.1)
+
+BUNDLED WITH
+   1.10.3
