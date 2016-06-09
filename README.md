@@ -17,6 +17,8 @@ Developed and maintained by [Made Tech][made]. Key contributions:
 
  * [Emile Swarts](https://github.com/emileswarts)
  * [Chris Blackburn](https://github.com/chrisblackburn)
+ * [Seb Ashton](https://github.com/sebashton)
+ * [Andrew Scott](https://github.com/askl56)
 
 ## License
 
