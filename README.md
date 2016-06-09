@@ -2,8 +2,10 @@
 
 `cf-vault` is the tool you use to syncronise your application secrets stored in [Hashicorp's Vault][Vault] to [Cloud Foundry][CloudFoundry] providers like [Pivotal][Pivotal].
 
+## Set environment variables for all Vault secrets under the key `foo`:
+
 ```
-rake cf:vault
+rake cf:vault:set_environment key=foo
 ```
 
 
