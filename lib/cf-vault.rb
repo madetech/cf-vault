@@ -1,1 +1,1 @@
-require 'cf/vault'
+require 'cf/cf-vault'
