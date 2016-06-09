@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cf/vault/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'cf-deploy'
+  spec.name          = 'cf-vault'
   spec.version       = CF::Vault::VERSION
   spec.authors       = ['Emile Swarts', 'Chris Blackburn']
   spec.email         = ['emile@madetech.co.uk', 'chris@madetech.co.uk']
@@ -21,4 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0.0'
   spec.add_development_dependency 'simplecov', '~> 0.7.1'
   spec.add_development_dependency 'codeclimate-test-reporter'
+  spec.add_development_dependency 'vault'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rb-readline'
 end

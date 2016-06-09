@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cf-deploy (0.0.1)
+    cf-vault (0.0.1)
       rake
 
 GEM
@@ -9,9 +9,16 @@ GEM
   specs:
     codeclimate-test-reporter (0.5.1)
       simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.1.1)
     diff-lcs (1.2.5)
+    method_source (0.8.2)
     multi_json (1.12.1)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rake (11.1.2)
+    rb-readline (0.5.3)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -28,16 +35,21 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (3.6.0)
+    vault (0.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.5)
-  cf-deploy!
+  cf-vault!
   codeclimate-test-reporter
+  pry
+  rb-readline
   rspec (~> 3.0.0)
   simplecov (~> 0.7.1)
+  vault
 
 BUNDLED WITH
    1.10.3

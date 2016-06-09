@@ -1,0 +1,1 @@
+require 'cf/cf-vault'
