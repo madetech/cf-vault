@@ -1,6 +1,6 @@
 module CF
   class Vault
-    class CloudFoundry
+    class CloudFoundryClient
       def self.login(credentials:)
         login_cmd = ['cf login']
 
