@@ -1,15 +1,11 @@
 require 'vault'
-require_relative '../cloud_foundry'
+require_relative 'cloud_foundry'
+require_relative 'client'
 
 module CF
   class Vault
     class Runner
       def initialize
-        @key = 'on_staging'
-        @client = ::Vault::Client.new(
-          address: 'https://vault.madetech.com'
-          # key: ENV.fetch('VAULT_TOKEN')
-        )
       end
 
       def run
@@ -19,10 +15,8 @@ module CF
 
       private
 
-      attr_reader :client, :key
-
       def login_to_cf
-        CF::CloudFoundry.login(credentials: cf_login_details)
+        CF::Vault::CloudFoundry.login(credentials: cf_login_details)
       end
 
       def cf_login_details
@@ -30,7 +24,7 @@ module CF
       end
 
       def set_environment_variables
-        CF::CloudFoundry.set_environment_variables(
+        CF::Vault::CloudFoundry.set_environment_variables(
           app_name: app_name,
           environment_variables: environment_variables
         )
@@ -40,31 +34,17 @@ module CF
         cf_secrets.fetch(:cf_app)
       end
 
-
       def environment_variables
-        return {
-          database_url: 'http://google.com',
-          database_username: 'root',
-          database_password: '*S9SSST*(#'
-        }
-        # secrets - cf_secrets
+        secrets.reject { |k, _| k.match(/^cf_/) }
       end
 
       def cf_secrets
-        return {
-          cf_api: 'api.run.pivotal.io',
-          cf_username: 'app@example.com',
-          cf_password: 'supersecret',
-          cf_organisation: 'MyOrg',
-          cf_space: 'MySpace',
-          cf_app: 'MyApp'
-        }
-
-        # secrets.match(/cf_.*/)
+        secrets.select { |k, _| k.match(/^cf_/) }
       end
 
       def secrets
-        @secrets ||= client.logical.read("secret/#{key}")
+        client = CF::Vault::Client.new(address: 'https://vault.madetech.com')
+        @secrets ||= client.read('on_staging')
       end
     end
   end
