@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cf-deploy (0.0.1)
+    cf-vault (0.0.1)
       rake
 
 GEM
@@ -43,7 +43,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.5)
-  cf-deploy!
+  cf-vault!
   codeclimate-test-reporter
   pry
   rb-readline
